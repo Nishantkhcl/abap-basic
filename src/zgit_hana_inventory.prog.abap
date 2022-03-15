@@ -301,11 +301,11 @@ TYPES: tt_f4_runid     TYPE STANDARD TABLE OF ts_f4_runid,
        tt_f4_customer  TYPE STANDARD TABLE OF ts_f4_customer.
 
 TYPES: BEGIN OF ts_zhana_inventory,
-         mandt          TYPE zhana_inventory-mandt,
-         zcustomer_name TYPE zhana_inventory-zcustomer_name,
-         zrunid         TYPE zhana_inventory-zrunid,
-         object_type    TYPE zhana_inventory-object_type,
-         zcount         TYPE zhana_inventory-zcount,
+         mandt          TYPE zghana_inventory-mandt,
+         zcustomer_name TYPE zghana_inventory-zcustomer_name,
+         zrunid         TYPE zghana_inventory-zrunid,
+         object_type    TYPE zghana_inventory-object_type,
+         zcount         TYPE zghana_inventory-zcount,
        END OF ts_zhana_inventory,
        tt_zhana_inventory TYPE STANDARD TABLE OF ts_zhana_inventory.
 
@@ -321,8 +321,8 @@ DATA: gv_lines           TYPE i,
 DATA: gd_ucomm TYPE sy-ucomm.
 
 DATA: BEGIN OF gs_cust_runid,
-        zcustomer_name TYPE zhana_inventory-zcustomer_name,
-        zrunid         TYPE zhana_inventory-zrunid,
+        zcustomer_name TYPE zghana_inventory-zcustomer_name,
+        zrunid         TYPE zghana_inventory-zrunid,
       END OF gs_cust_runid.
 
 SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-011.
@@ -434,7 +434,7 @@ START-OF-SELECTION.
     CLEAR: gv_lines, gs_zhana_inventory, gv_date.
 
     IF NOT gt_zhana_inventory IS INITIAL.
-      INSERT zhana_inventory FROM TABLE gt_zhana_inventory.
+      INSERT zghana_inventory FROM TABLE gt_zhana_inventory.
       COMMIT WORK.
     ENDIF.
   ELSEIF p_orun = 'X'.
