@@ -32,6 +32,6 @@ DATA:it_index_new       TYPE STANDARD TABLE OF zgit_hana_gi_index,
      gv_msg_line        TYPE                   sci_line,
      line               TYPE                   i,
      gv_trno            TYPE                   trkorr.
-FIELD-SYMBOLS:<fs_results> TYPE zhana_output.
+FIELD-SYMBOLS:<fs_results> TYPE zgit_hana_output.
 CONSTANTS:gc_fugr TYPE trobjtype VALUE 'FUGR'.
 * INCLUDE LZHANA_SPLIT_SCREEND...            " Local class definition
