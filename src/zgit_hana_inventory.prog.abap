@@ -284,7 +284,7 @@ DATA : i_sxc_attr    TYPE STANDARD TABLE OF x_sxc_attr,
 ********* End Custom Programs
 
 TYPES: BEGIN OF ts_f4_runid,
-         zrunid TYPE zhana_inventory-zrunid,
+         zrunid TYPE zghana_inventory-zrunid,
        END OF ts_f4_runid.
 
 TYPES: BEGIN OF ts_f4_runid_hlp,
