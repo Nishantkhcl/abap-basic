@@ -1,16 +1,16 @@
 FUNCTION ZGIT_HANA_SPLIT_SCREEN.
-*"--------------------------------------------------------------------
+*"----------------------------------------------------------------------
 *"*"Local Interface:
 *"  IMPORTING
 *"     VALUE(IM_TRNO) TYPE  TRKORR OPTIONAL
 *"     REFERENCE(IM_FLAG_CLAS) TYPE  FLAG OPTIONAL
 *"  TABLES
-*"      LT_FINAL STRUCTURE  ZHANA_OUTPUT
+*"      LT_FINAL STRUCTURE  ZGIT_HANA_OUTPUT
 *"      GI_CONTENT_FNL STRUCTURE  ABAPTXT255
 *"      GI_CONTENT_OLD_FNL STRUCTURE  ABAPTXT255
-*"      GI_INDEX_NEW STRUCTURE  ZHANA_GI_INDEX
-*"      IT_RETURN STRUCTURE  ZHANA_OUTPUT OPTIONAL
-*"--------------------------------------------------------------------
+*"      GI_INDEX_NEW STRUCTURE  ZGIT_HANA_GI_INDEX
+*"      IT_RETURN STRUCTURE  ZGIT_HANA_OUTPUT OPTIONAL
+*"----------------------------------------------------------------------
   LOOP AT gi_index_new INTO gs_index_new.
     ls_index_new-sobjname = gs_index_new-sobjname.
     ls_index_new-old_line = gs_index_new-old_line.
