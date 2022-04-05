@@ -293,7 +293,7 @@ TYPES: BEGIN OF ts_f4_runid_hlp,
        END OF ts_f4_runid_hlp.
 
 TYPES: BEGIN OF ts_f4_customer,
-         zcustomer_name TYPE zhana_customer-zcustomer_name,
+         zcustomer_name TYPE zghana_customer-zcustomer_name,
        END OF ts_f4_customer.
 
 TYPES: tt_f4_runid     TYPE STANDARD TABLE OF ts_f4_runid,
