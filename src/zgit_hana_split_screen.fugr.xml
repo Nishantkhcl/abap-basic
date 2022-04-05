@@ -11,7 +11,7 @@
    <FUNCTIONS>
     <item>
      <FUNCNAME>ZGIT_HANA_CLEAR_GLOBAL_DATA</FUNCNAME>
-     <SHORT_TEXT>Clear Global data</SHORT_TEXT>
+     <SHORT_TEXT>Clear Global data (a change in description for abapGit)</SHORT_TEXT>
     </item>
     <item>
      <FUNCNAME>ZGIT_HANA_PASS_GLOBAL_DATA</FUNCNAME>
