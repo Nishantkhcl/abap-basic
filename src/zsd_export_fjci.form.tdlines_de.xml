@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<abapGit version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TDLINES>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>CON_NADR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CUST_NAME_ADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Consignee</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;V55EFJCI-BANK_NAME&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,To The Order of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-bank_name&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-bank_adrs1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-cust_name&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-cust_adrs1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-cust_adrs2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-cust_adrs3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INCOTERM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>INCOTERM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D2</TDFORMAT>
+     <TDLINE>&amp;v55efjci-incoterm1&amp; &amp;v55efjci-incoterm2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INV_DTNR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>INVOICE_DATA</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>SET DATE MASK = &apos;MMMM DD, YYYY&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;Inv. Date &amp; No.:&lt;/&gt; &amp;v55efjci-inv_datum(Z)&amp; - &amp;v55efjci-inv_nbr&amp; /</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&amp;PAGE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>ITEM_DES</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>ITEM_LEVEL_DESCRIPTION_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>DH</TDFORMAT>
+     <TDLINE>No.,,Description,,Qty,,Unit Price,,Amount</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>MAIN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>INVOICE_ITEM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;A&amp; = &amp;V55EFJCI-ITEM_NBR(Z)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;B&amp; = &amp;V55EFJCI-ITEM_TEXT(27)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;C&amp; = &amp;V55EFJCI-ITEM_QTY(14.*)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;D&amp; = &amp;V55EFJCI-ITEM_UOM(4)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;E&amp; = &amp;V55EFJCI-ITEM_UPR00(12.*)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;F&amp; = &amp;V55EFJCI-ITEM_CURR(3)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;G&amp; = &amp;V55EFJCI-ITEM_NETPR(15.*)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;H&amp; = &amp;V55EFJCI-ITEM_CURR(3)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;a&amp;,,&amp;b&amp;,,&amp;c&amp;,,&amp;d&amp;,,&amp;e&amp;,,&amp;f&amp;,,&amp;g&amp;,,&amp;h&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;V55EFJCI-ITEM_HERTI&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>,,Made in &amp;v55efjci-item_herti&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>HSCODE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>,,HS Code: &amp;v55efjci-hs_code&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>ITEM_CUSTOMER_PO_NUMBER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>,,PO NBR.: &amp;v55efjci-item_ponbr&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>ITEM_REMARKS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;THEAD11-TDNAME&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;THEAD11-TDNAME&amp; OBJECT VBBP ID FJTX LANGUAGE &apos;EN&apos; PARAGRAPH &apos;D4&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SUM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;1&amp; = &amp;V55EFJCI-TOTAL_QTY(I)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;2&amp; = &amp;V55EFJCI-ITEM_UOM(4)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;3&amp; = &amp;V55EFJCI-TOTAL_AMT(15.*)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;4&amp; = &amp;V55EFJCI-ITEM_CURR(3)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D3</TDFORMAT>
+     <TDLINE>,,T O T A L,,&amp;1&amp;,,&amp;2&amp;,,,,,,&amp;3&amp;,,&amp;4&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>END_BAR_LINE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;LINE&amp; = &apos;--------------------&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;LINE&amp;&amp;LINE&amp;&amp;LINE&amp;&amp;LINE&amp;&amp;LINE(15)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>REMARKS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Remarks :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;THEAD10-TDNAME&amp; OBJECT VBBK ID FJTX LANGUAGE &apos;EN&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SPECIAL_INSTRUCTION</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>CASE &amp;K_E1EDKF1-AKKTP&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;C&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;THEAD-TDNAME&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Special Instruction :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;THEAD-TDNAME&amp; OBJECT AKKP ID LCSI LANGUAGE &apos;EN&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;R&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;THEAD-TDNAME&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Special Instruction :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;THEAD-TDNAME&amp; OBJECT AKKP ID LCSI LANGUAGE &apos;EN&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;U&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;THEAD-TDNAME&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Special Instruction :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;THEAD-TDNAME&amp; OBJECT AKKP ID LCSI LANGUAGE &apos;EN&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;O&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN OTHERS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDCASE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>NEW-PAGE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>SHIPPING MARKS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPING_MARKS1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Shipping Marks:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;v55efjci-shp_mrk1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPING_MARKS2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;v55efjci-shp_mrk2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPING_MARKS3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;v55efjci-shp_mrk3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPING_MARKS4</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>C/No. &amp;v55efjci-shp_mrk4&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPING_MARKS5</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>Made in &amp;v55efjci-shp_mrk5&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CASE_NUMBER_1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Case Numbers :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CASE_NUMBER_2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>&amp;v55efjci-case_nbr&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SIGNATURE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>PROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>,,,,,,&amp;v55efjci-shpr_name&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D1</TDFORMAT>
+     <TDLINE>,,,,,,_________________________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDPROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>NEW-PAGE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>END</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>EMPTY</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>OUTLAY</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>OUTLAY</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Lines of Invoice Frame</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Full Horizontal Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;2.0&apos; CM HEIGHT 5 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;2.1&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;9.4&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 4</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;9.5&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 5</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;10.0&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 6</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;10.1&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical Line</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM WIDTH 0 TW  YPOS &apos;2.0&apos; CM HEIGHT &apos;7.5&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Left-hand horizontal lines (9.4 CM)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;4.3&apos; CM HEIGHT 0 TW WIDTH &apos;9.4&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;6.8&apos; CM HEIGHT 0 TW WIDTH &apos;9.4&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Right-hand horizontal lines (10.6 CM)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;3.0&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;3.8&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;4.6&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 4</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;5.4&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 5</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;6.2&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 6</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;7.0&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>No 7</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.9&apos; CM YPOS &apos;7.8&apos; CM HEIGHT 0 TW WIDTH &apos;10.6&apos; CM FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Shading Design for Header Text</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Top Shading Stripe</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;0.75&apos; CM INTENSITY 40</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Bottom Shading Stripe</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX YPOS &apos;28&apos; CM INTENSITY 40</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>OUTLAY2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>OUTLAY2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;3.0&apos; CM HEIGHT 5 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;3.1&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;3.6&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;3.7&apos; CM HEIGHT 0 TW FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>SHADING FOR HEADER TEXT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0.5&apos; CM YPOS &apos;0.75&apos; CM INTENSITY 40</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX YPOS &apos;28&apos; CM INTENSITY 40</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PAY_TERM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>PAYMENT_TERMS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Payment Terms:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>CASE &amp;K_E1EDKF1-AKKTP&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;C&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-fd_name1&amp; &amp;v55efjci-fd_name2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>No. &amp;v55efjci-fd_nummer&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>Opening Date: &amp;v55efjci-fd_datum(Z)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;U&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-fd_name1&amp; &amp;v55efjci-fd_name2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>No. &amp;v55efjci-fd_nummer&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>Opening Date: &amp;v55efjci-fd_datum(Z)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;R&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-fd_name1&amp; &amp;v55efjci-fd_name2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>No. &amp;v55efjci-fd_nummer&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>Opening Date: &amp;v55efjci-fd_datum(Z)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN &apos;O&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-fd_name1&amp; &amp;v55efjci-fd_name2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>WHEN OTHERS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&amp;v55efjci-pay_terms3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDCASE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PORT_ARR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>PORT_ARRIVAL</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;Port of Arrival:&lt;/&gt; &amp;v55efjci-port_arr&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PORT_DEP</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>PORT_DEPARTURE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;Port of Departure:&lt;/&gt; &amp;v55efjci-port_dep&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PO_NBR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CUSTOMER_PO_NUMBER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;Consignee Order No.:&lt;/&gt; &amp;v55efjci-cust_ponbr&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SHIPNADR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIP_NAME_ADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Notify Party</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-ship_name&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-ship_adrs1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-ship_adrs2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-ship_adrs3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SHIPPER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPPER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>R1</TDFORMAT>
+     <TDLINE>Shipper</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-shpr_name&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-shpr_adrs1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-shpr_adrs2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>,,&amp;v55efjci-shpr_adrs3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SHIP_DAT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHIPMENT_DATE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>SET DATE MASK = &apos;MMMM DD, YYYY&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;ETD On or about:&lt;/&gt; &amp;v55efjci-ship_dat(Z)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>TITLE1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>BD</TDFORMAT>
+     <TDLINE>COMMERCIAL INVOICE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>VES_NAME</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>VESSEL_NAME</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>D</TDFORMAT>
+     <TDLINE>&lt;BD&gt;Vessel Name:&lt;/&gt; &amp;v55efjci-vessel_nam&amp;</TDLINE>
+    </TLINE>
+   </TDLINES>
+  </asx:values>
+ </asx:abap>
+</abapGit>
