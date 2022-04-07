@@ -410,7 +410,7 @@ ENDFORM.                    " FREE_CONTINER
 *  -->  p1        text
 *  <--  p2        text
 *----------------------------------------------------------------------*
-FORM create_tr_for_save CHANGING lw_result TYPE zhana_output.
+FORM create_tr_for_save CHANGING lw_result TYPE zghana_output.
   DATA: lv_funcname TYPE rs38l_fnam.
   DATA: ls_mtdkey TYPE seocpdkey.
   IF gv_trno IS INITIAL.
