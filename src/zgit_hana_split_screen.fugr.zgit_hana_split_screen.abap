@@ -243,8 +243,8 @@ MODULE user_command_9010 INPUT.
        index      TYPE sy-index,
        lv_index   TYPE sy-index,
        lv_index1  TYPE sy-index,
-       gs_results TYPE zhana_output.
-  DATA: lw_result TYPE zhana_output.
+       gs_results TYPE zgit_hana_output.
+  DATA: lw_result TYPE zgit_hana_output.
   line = lines( gt_results ).
   CALL METHOD cl_gui_cfw=>dispatch.
 
