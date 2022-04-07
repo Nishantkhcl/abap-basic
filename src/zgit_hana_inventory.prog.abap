@@ -327,7 +327,7 @@ DATA: BEGIN OF gs_cust_runid,
 
 SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-011.
 PARAMETERS: p_cust TYPE zgit_customer_name OBLIGATORY,
-            p_runid TYPE zrunid OBLIGATORY,
+            p_runid TYPE zgrunid OBLIGATORY,
             p_nrun RADIOBUTTON GROUP rb1 DEFAULT 'X' USER-COMMAND upd, " New run
             p_orun RADIOBUTTON GROUP rb1.        " Old inventory Data for display
 SELECTION-SCREEN END OF BLOCK b11.
