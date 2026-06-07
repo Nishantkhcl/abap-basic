@@ -1,0 +1,38 @@
+managed implementation in class zbp_purchaseorder unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_PURCHASEORDER alias PurchaseOrder
+persistent table ztbl_po_head
+draft table ztbl_po_head_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+{
+  field ( numbering : managed, readonly ) PoNumber;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy, LocalLastChangedAt;
+  field ( readonly ) TotalValue;
+  field ( readonly : update ) Status;
+  field ( mandatory ) PoNumber, VendorId, PurchasingOrganization, Currency;
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  validation validateMandatoryFields on save { field VendorId, PurchasingOrganization; }
+  validation validateCurrencyConsistency on save { field Currency; }
+
+  determination setInitialStatus on modify { field Status; }
+  determination calculateTotalValue on save { field TotalValue; }
+
+  action ( features : instance ) closePO result [1] $self;
+  action ( features : instance ) reOpenPO parameter ZD_ReopenPOParams result [1] $self;
+
+  association _Item { create; with draft; }
+}
